@@ -6,9 +6,12 @@ import android.view.ViewGroup
 import android.widget.ImageView
 import android.widget.TextView
 import androidx.recyclerview.widget.RecyclerView
+import androidx.swiperefreshlayout.widget.CircularProgressDrawable
 import kotlinx.android.synthetic.main.view_item_country.view.*
 import ro.crxapps.countriesmvvm.R
 import ro.crxapps.countriesmvvm.countries.data.models.Country
+import ro.crxapps.countriesmvvm.utils.getProgressDrawable
+import ro.crxapps.countriesmvvm.utils.loadImage
 
 class CountryListAdapter(var countries: ArrayList<Country>) :
     RecyclerView.Adapter<CountryListAdapter.CountryViewHolder>() {
@@ -34,9 +37,12 @@ class CountryListAdapter(var countries: ArrayList<Country>) :
         private val countryCapital: TextView = view.textView_capital
         private val countryImage: ImageView = view.imageView_image
 
+        private val progressDrawable: CircularProgressDrawable = getProgressDrawable(view.context)
+
         fun bind(country: Country) {
             countryTitle.text = country.countryName
             countryCapital.text = country.countryCapital
+            countryImage.loadImage(country.countryImageUrl, progressDrawable)
         }
     }
 }
