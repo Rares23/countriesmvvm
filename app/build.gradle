@@ -39,6 +39,9 @@ dependencies {
     //coordinator layout
     implementation "androidx.coordinatorlayout:coordinatorlayout:1.1.0"
 
+    //swipe refresh layout
+    implementation "androidx.swiperefreshlayout:swiperefreshlayout:1.0.0"
+
     //constraint layout
     implementation 'androidx.constraintlayout:constraintlayout:1.1.3'
 
