@@ -40,6 +40,7 @@ class CountriesActivity : AppCompatActivity() {
     private fun observeViewModel() {
         viewModel.countries.observe(this, Observer { countries ->
             countries?.let {
+                recyclerView_countries.visibility = View.VISIBLE
                 countryListAdapter.updateCountries(it)
             }
         })
@@ -47,12 +48,18 @@ class CountriesActivity : AppCompatActivity() {
         viewModel.loading.observe(this, Observer {isLoading ->
             isLoading?.let {
                 progressBar_loader.visibility = if(it) View.VISIBLE else View.GONE
+                if(it) {
+                    recyclerView_countries.visibility = View.GONE
+                }
             }
         })
 
         viewModel.countryLoadError.observe(this, Observer {isError ->
             isError?.let {
                 textView_error.visibility = if(it) View.VISIBLE else View.GONE
+                if(it) {
+                    recyclerView_countries.visibility = View.GONE
+                }
             }
         })
     }
