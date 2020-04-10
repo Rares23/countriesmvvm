@@ -1,3 +1,5 @@
 <resources>
-    <string name="app_name">CountriesMVVM</string>
+    <string name="app_name">Countries</string>
+    <!-- errors -->
+    <string name="countries_loading_error">An error occurred when loading countries</string>
 </resources>
