@@ -23,10 +23,19 @@ class CountriesActivity : AppCompatActivity() {
         super.onCreate(savedInstanceState)
         setContentView(R.layout.activity_countries)
         initCountryListRecyclerView()
+        initRefreshLayout()
+        viewModel.refresh()
+
+
 
         observeViewModel()
+    }
 
-        viewModel.refresh()
+    private fun initRefreshLayout() {
+        swipeRefreshLayout.setOnRefreshListener {
+            swipeRefreshLayout.isRefreshing = false
+            viewModel.refresh()
+        }
     }
 
     private fun initCountryListRecyclerView() {

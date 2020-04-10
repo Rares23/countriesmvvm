@@ -7,16 +7,23 @@ import io.reactivex.disposables.CompositeDisposable
 import io.reactivex.schedulers.Schedulers
 import ro.crxapps.countriesmvvm.countries.data.models.Country
 import ro.crxapps.countriesmvvm.countries.data.repository.CountryRepository
+import ro.crxapps.countriesmvvm.countries.di.DaggerRepositoryComponent
+import javax.inject.Inject
 
 class CountryListViewModel : ViewModel() {
 
-    private val countryRepository = CountryRepository()
+    @Inject
+    lateinit var countryRepository: CountryRepository
 
     private val disposable = CompositeDisposable()
 
     val countries: MutableLiveData<List<Country>> = MutableLiveData()
     val countryLoadError: MutableLiveData<Boolean> = MutableLiveData()
     val loading: MutableLiveData<Boolean> = MutableLiveData()
+
+    init {
+        DaggerRepositoryComponent.create().inject(this)
+    }
 
     fun refresh() {
         fetchCountries()
