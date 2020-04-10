@@ -4,7 +4,7 @@ import androidx.lifecycle.MutableLiveData
 import androidx.lifecycle.ViewModel
 import ro.crxapps.countriesmvvm.countries.data.models.Country
 
-class CountriesListViewModel : ViewModel() {
+class CountryListViewModel : ViewModel() {
     val countries: MutableLiveData<List<Country>> = MutableLiveData()
     val countryLoadError: MutableLiveData<Boolean> = MutableLiveData()
     val loading: MutableLiveData<Boolean> = MutableLiveData()
